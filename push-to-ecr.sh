@@ -17,7 +17,7 @@ AWS_REGION=us-east-1
 IMAGE_TAG=latest
 
 # authenticate Docker to ECR
-aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin $(aws sts get-caller-identity --query 'Account' --output text).dkr.ecr.${AWS_REGION}.amazon.aws.com
+aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin $(aws sts get-caller-identity --query 'Account' --output text).dkr.ecr.${AWS_REGION}.amazonaws.com
 
 #  check if repo exists (OPTIONAL)
 REPO_URI=$(aws ecr describe-repositories --repository-names ${REPOSITORY_NAME} --region ${AWS_REGION} --query 'repositories[0].repositoryUri' --output text 2>/dev/null)
