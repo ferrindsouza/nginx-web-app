@@ -16,6 +16,9 @@ REPOSITORY_NAME=nginx-web-app
 AWS_REGION=us-east-1
 IMAGE_TAG=latest
 
+# Optional if not done earlier to build Docker Image
+# docker build -t ${REPOSITORY_NAME}:${IMAGE_TAG}
+
 # authenticate Docker to ECR
 aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin $(aws sts get-caller-identity --query 'Account' --output text).dkr.ecr.${AWS_REGION}.amazonaws.com
 
