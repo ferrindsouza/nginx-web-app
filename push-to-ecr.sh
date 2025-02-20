@@ -14,6 +14,7 @@ set -o # exits on option specified so if set -o pipefail then script exits if LH
 # setting variables
 REPOSITORY_NAME=nginx-web-app
 AWS_REGION=us-east-1
+IMAGE_TAG=latest
 
 # authenticate Docker to ECR
 aws ecr get-login-password --region ${AWS_REGION} | docker login --username AWS --password-stdin $(aws sts get-caller-identity --query 'Account' --output text).dkr.ecr.${AWS_REGION}.amazon.aws.com
